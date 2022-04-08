@@ -1,0 +1,9 @@
+.places__place {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -2,7 +2,7 @@
     background-color: #FFFFFF;
     width: 430px;
     height: 336px;
-    display: none;
+    display: flex;
     flex-direction: column;
     padding: 34px 36px 37px;
     color: black;

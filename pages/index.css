@@ -32,6 +32,7 @@
 @import url(../blocks/popup-edit/__title/popup-edit__title.css);
 @import url(../blocks/popup-edit/__save-button/popup-edit__save-button.css);
 @import url(../blocks/popup-edit/__close-button/popup-edit__close-button.css);
+@import url(../blocks/popup-edit/_is-opened/popup-edit_is-opened.css);
 
 
 

@@ -1,26 +1,43 @@
-// const openEditProfileButton = document.querySelector('.profile__add-button');
-// const editProfilePopup = document.querySelector('.popup-edit');
-// const closeEditProfileButton = editProfilePopup.querySelector('.popup-edit__close-button');
-// console.log(openEditProfileButton);
-// console.log(editProfilePopup);
-// console.log(closeEditProfileButton);
+const openEditProfileButton = document.querySelector('.profile__edit-button');
+const editProfilePopup = document.querySelector('.popup-edit');
+const closeEditProfilPopupButton = editProfilePopup.querySelector('.popup-edit__close-button');
+const saveEditProfileButton = editProfilePopup.querySelector('.popup-edit__save-button');
+let nameEditProfilePopup = editProfilePopup.querySelector('.popup-edit__name');
+let jobEditProfilePopup = editProfilePopup.querySelector('.popup-edit__job');
+let nameProfile = document.querySelector('.profile__name');
+let jobProfile = document.querySelector('.profile__job');
 
 
 
+function addEditPopup() {
+    editProfilePopup.classList.add('popup-edit_is-opened');
+    nameEditProfilePopup.value = nameProfile.textContent
+    jobEditProfilePopup.value = jobProfile.textContent;
+}
 
-// function toggleEditPopup() {
+function removeEditPopup() {
+    editProfilePopup.classList.remove('popup-edit_is-opened');
     
-// console.log('in before');
-//     editProfilePopup.classList.add('popup-edit_is-opened');
-    
-// console.log('in after');
-// }
+}
 
-// console.log('out');
-// toggleEditPopup();
+function popupOverlayClick(evt) {
+    if(evt.target === evt.currentTarget){
+        editProfilePopup.classList.remove('popup-edit_is-opened'); 
+    }
+}
+
+function savePopup() {
+    nameProfile.textContent = nameEditProfilePopup.value;
+    jobProfile.textContent = jobEditProfilePopup.value;
+    editProfilePopup.classList.remove('popup-edit_is-opened'); 
+}
 
 
 
 
-// console.log('1');
-// console.log('2');
+
+
+openEditProfileButton.addEventListener('click', addEditPopup);
+closeEditProfilPopupButton.addEventListener('click', removeEditPopup);
+editProfilePopup.addEventListener('click',popupOverlayClick)
+saveEditProfileButton.addEventListener('click', savePopup)

@@ -29,7 +29,7 @@ function popupOverlayClick(evt) {
 function savePopup() {
     nameProfile.textContent = nameEditProfilePopup.value;
     jobProfile.textContent = jobEditProfilePopup.value;
-    editProfilePopup.classList.remove('popup-edit_is-opened'); 
+    removeEditPopup();
 }
 
 

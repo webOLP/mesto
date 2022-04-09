@@ -8,6 +8,7 @@
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/places/places.css);
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/popup-edit/popup-edit.css);
 
 
 
@@ -25,6 +26,12 @@
 @import url(../blocks/places/__like-button/places__like-button.css);
 @import url(../blocks/places/__title/places__title.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+@import url(../blocks/popup-edit/__window/popup-edit__window.css);
+@import url(../blocks/popup-edit/__name/popup-edit__name.css);
+@import url(../blocks/popup-edit/__job/popup-edit__job.css);
+@import url(../blocks/popup-edit/__title/popup-edit__title.css);
+@import url(../blocks/popup-edit/__save-button/popup-edit__save-button.css);
+@import url(../blocks/popup-edit/__close-button/popup-edit__close-button.css);
 
 
 

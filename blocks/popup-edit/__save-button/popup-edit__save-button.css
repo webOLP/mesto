@@ -1,0 +1,11 @@
+.popup-edit__save-button {
+    height: 50px;
+    color: white;
+    border: none;
+    background-color: black;
+    padding: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+}

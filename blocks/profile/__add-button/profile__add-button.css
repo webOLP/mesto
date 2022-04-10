@@ -7,4 +7,10 @@
     margin-left: auto;
     border: 0px;
     cursor: pointer;
+    transition: opacity .3s linear;
+    border-radius: 2px;
+}
+
+.profile__add-button:hover {
+    opacity: .6;
 }

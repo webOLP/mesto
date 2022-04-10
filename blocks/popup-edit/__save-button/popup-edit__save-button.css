@@ -9,4 +9,10 @@
     line-height: 22px;
     text-align: center;
     cursor: pointer;
+    border-radius: 2px;
+    transition: opacity .3s linear;
+}
+
+.popup-edit__save-button:hover {
+    opacity: .8;
 }

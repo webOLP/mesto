@@ -4,9 +4,13 @@
     width: 22px;
     border: 0;
     padding: 0;
-    background-color: #FFFFFF;
+    background: none;
     cursor: pointer;
     transition: opacity .3s linear;
+    background-image: url(../../../images/Like.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: background-image .2s linear;
 }
 
 .places__like-button:hover {

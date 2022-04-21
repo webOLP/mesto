@@ -5,9 +5,26 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-color: black;
-    transition: background-image .3s linear;
+    /* transition: background-image .3s linear; */
+    transition: opacity .3s linear;
 }
 
 .header__logo:hover {
-    background-image: url(../../../images/logo\ black.svg);
+    /* background-image: url(../../../images/logo\ black.svg); в макете показано, что нужно сделать его черным, но это странно */
+    opacity: .7;
+}
+
+@media screen and (max-width: 1024px ) {
+    .header__logo {
+        width: 124px;
+        height: 28px;
+    }
+}
+
+@media screen and (max-width: 768px ) {
+    .header__logo {  
+        width: 104px;
+        height: 25px;
+        margin-left: 27px;
+    }
 }

@@ -3,3 +3,16 @@
     height: 120px;
     border-radius: 100%;
 }
+
+@media screen and (max-width: 1024px ) {
+    .profile__image {
+        margin-bottom: 26px;
+    }
+}
+
+
+@media screen and (max-width: 768px ) {
+    .profile__image {
+        margin-bottom: 26px;
+    }
+}

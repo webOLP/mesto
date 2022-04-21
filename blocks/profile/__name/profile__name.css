@@ -6,3 +6,19 @@
     margin: 0;
     text-align:end; 
 }
+
+@media screen and (max-width: 1024px ) {
+    .profile__name {
+        text-align: center;
+    }
+}
+
+
+@media screen and (max-width: 768px ) {
+    .profile__name {
+        font-size: 27px;
+        line-height: 33px;
+    }
+}
+
+

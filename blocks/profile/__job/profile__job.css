@@ -6,3 +6,18 @@
     margin: 0;
     width: 100%;
 }
+
+@media screen and (max-width: 1024px ) {
+    .profile__job {
+        text-align: center;
+    }
+}
+
+
+@media screen and (max-width: 768px ) {
+    .profile__job {
+        text-align: center;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

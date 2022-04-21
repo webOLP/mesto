@@ -1,6 +1,23 @@
 .profile {
     padding-top: 40px;
-    width: 880px;
+    width: calc(100% - 2*16px);
+    max-width: 880px;
     display: flex;
     align-items: center;
+}
+
+
+@media screen and (max-width: 1024px ) {
+    .profile {
+        padding-top: 42px;
+        flex-direction: column;
+        height: 286px;
+    }
+}
+
+@media screen and (max-width: 768px ) {
+    .profile {
+        min-width: 320px;
+        height: 286px;
+    }
 }

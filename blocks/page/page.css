@@ -3,3 +3,15 @@
     background-color: #000000;
     font-family: 'Inter', Arial, sans-serif;
 }
+
+@media screen and (max-width: 1024px ) {
+    .page {
+        min-width: 768px;
+    }
+}
+
+@media screen and (max-width: 768px ) {
+    .page {
+        min-width: 320px;
+    }
+}

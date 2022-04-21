@@ -6,3 +6,20 @@
     margin-left: 30px;
     align-items: center;
 }
+
+@media screen and (max-width: 1024px ) {
+    .profile__about {
+        max-width: 100%;
+        justify-content: center;
+        margin-left: 0px;
+    }
+}
+
+
+@media screen and (max-width: 768px ) {
+    .profile__about {
+        max-width: 100%;
+        justify-content: center;
+        margin-left: 0x;
+    }
+}

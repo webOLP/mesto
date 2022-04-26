@@ -16,3 +16,11 @@
 .popup-edit__save-button:hover {
     opacity: .8;
 }
+
+@media screen and (max-width: 768px ) {
+    .popup-edit__save-button {
+        height: 50px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

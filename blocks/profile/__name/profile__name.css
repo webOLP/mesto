@@ -4,13 +4,12 @@
     line-height: 48px;
     font-weight: 500;
     margin: 0;
-    text-align:end; 
+    text-align:end;
+    display: inline;
 }
 
 @media screen and (max-width: 1024px ) {
-    .profile__name {
-        text-align: center;
-    }
+   
 }
 
 

@@ -2,7 +2,6 @@
     background-color: #FFFFFF;
     width: 430px;
     max-width: 430px;
-    height: 336px;
     display: flex;
     flex-direction: column;
     padding: 34px 36px 37px;
@@ -15,15 +14,7 @@
 @media screen and (max-width: 1024px ) {
     .popup-edit__window {
         width: calc(100% - 36px);
-        height: 328px;
-        padding: 25px 22px;
-    }
-}
-
-@media screen and (max-width: 768px ) {
-    .popup-edit__window {
-        width: calc(100% - 36px);
-        height: 328px;
+        min-height: 328px;
         padding: 25px 22px;
     }
 }

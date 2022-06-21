@@ -11,7 +11,7 @@
     cursor: pointer;
     transition: opacity .3s linear;
     border-radius: 2px;
-    background-image: url(../../../images/Add\ Button.svg);
+    background-image: url(../../../images/Add-Button.svg);
     background-size: 22px;
     background-repeat: no-repeat;
     background-position: center;
@@ -27,14 +27,6 @@
         margin-left: 0;
         align-items: center;
         margin-top: auto;
-
-    }
-}
-
-
-@media screen and (max-width: 768px ) {
-    .profile__add-button {
-        margin-left: 0;
-        margin-top: auto;
+        min-width: none;
     }
 }

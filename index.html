@@ -5,71 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto Russia</title>
-    <link rel="icon" href="./images/olp.png">
     <link rel="stylesheet" href="./vendor/normalize.css">
+    <link rel="icon" href="./images/olp.png">
     <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
     <header class="header container">
         <div class="header__logo">
-
         </div>
-        <hr class="header__line">
     </header>
-    <main>
+    <main class="main-content">
         <section class="profile container" aria-label="профиль">
             <img src="./images/Custo.jpg" alt="Жак-Ив Кусто" class="profile__image">
             <div class="profile__about">
-                <p class="profile__name">Жак-Ив Кусто</p>
-                <button class="profile__edit-button"></button>
+                <h2 class="profile__name">Жак-Ив Кусто</h2>
+                <button type="button" class="profile__edit-button"></button>
                 <p class="profile__job">Исследователь океана</p>
             </div>
-            <button class="profile__add-button"></button>
+            <button type="button" class="profile__add-button"></button>
         </section>
         <section class="places container">
             <div class="places__place">
                 <img src="./images/photo1.jpg" alt="Байкал" class="places__image">
                 <h3 class="places__title">Байкал</h3>
-                <button class="places__like-button"><img src="./images/Like.svg" alt=""></button>
+                <button type="button" class="places__like-button"><img src="./images/Like.svg" alt="Лайк"></button>
             </div>
             <div class="places__place">
                 <img src="./images/photo2.jpg" alt="Петергоф" class="places__image">
                 <h3 class="places__title">Петергоф</h3>
-                <button class="places__like-button"><img src="./images/Like.svg" alt=""></button>
+                <button type="button" class="places__like-button"><img src="./images/Like.svg" alt="Лайк"></button>
             </div>
             <div class="places__place">
                 <img src="./images/photo3.jpg" alt="Красноярский край" class="places__image">
                 <h3 class="places__title">Красноярский край</h3>
-                <button class="places__like-button"><img src="./images/Like.svg" alt=""></button>
+                <button type="button" class="places__like-button"><img src="./images/Like.svg" alt="Лайк"></button>
             </div>
             <div class="places__place">
                 <img src="./images/photo4.jpg" alt="Камчатка" class="places__image">
                 <h3 class="places__title">Камчатка</h3>
-                <button class="places__like-button"><img src="./images/Like.svg" alt=""></button>
+                <button type="button" class="places__like-button"><img src="./images/Like.svg" alt="Лайк"></button>
             </div>
             <div class="places__place">
                 <img src="./images/photo5.jpg" alt="Парк Таганай" class="places__image">
                 <h3 class="places__title">Парк &#171;Таганай&#187;</h3>
-                <button class="places__like-button"><img src="./images/Like.svg" alt=""></button>
+                <button type="button" class="places__like-button"><img src="./images/Like.svg" alt="Лайк"></button>
             </div>
             <div class="places__place">
                 <img src="./images/photo6.jpg" alt="Самара" class="places__image">
                 <h3 class="places__title">Самара</h3>
-                <button class="places__like-button"><img src="./images/Like.svg" alt=""></button>
+                <button type="button" class="places__like-button"><img src="./images/Like.svg" alt="Лайк"></button>
             </div>
         </section>
     </main>
     <footer class="footer container">
         <p class="footer__copyright">© 2020 OLP</p>
     </footer>
-    <div class="popup-edit">
-        <div class="popup-edit__window">
+    <div name="popup-edit" class="popup-edit">
+        <form class="popup-edit__window">
             <h3 class="popup-edit__title">Редактировать профиль</h3>
-            <input type="text" class="popup-edit__name">
-            <input type="text" class="popup-edit__job">
-            <button class="popup-edit__save-button">Сохранить</button>
-            <button class="popup-edit__close-button"></button>
-        </div>
+            <input name="input_name" placeholder="Имя" type="text" class="popup-edit__input popup-edit__input_text_name">
+            <input name="input_job" placeholder="Описание" type="text" class="popup-edit__input popup-edit__input_text_job">
+            <button type="submit" class="popup-edit__save-button">Сохранить</button>
+            <button type="reset" class="popup-edit__close-button"><img src="./images/Close-Icon.svg" alt="Кнопка закрытия формы" class="popup-edit__close-button-image"></button>
+        </form>
     </div> 
    <script src="./scripts/popup-edit.js"></script>
 </body>

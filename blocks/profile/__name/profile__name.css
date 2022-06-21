@@ -6,17 +6,25 @@
     margin: 0;
     text-align:end;
     display: inline;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 80%;
 }
+
+
 
 @media screen and (max-width: 1024px ) {
-   
+    .profile__name {
+        padding-left: 42px;
+    }
 }
-
 
 @media screen and (max-width: 768px ) {
     .profile__name {
         font-size: 27px;
         line-height: 33px;
+        padding-left: 28px;
     }
 }
 

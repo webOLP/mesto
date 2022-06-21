@@ -1,5 +1,5 @@
 .popup-edit__save-button {
-    height: 50px;
+    min-height: 50px;
     color: white;
     border: none;
     background-color: black;
@@ -19,7 +19,6 @@
 
 @media screen and (max-width: 768px ) {
     .popup-edit__save-button {
-        height: 50px;
         font-size: 14px;
         line-height: 17px;
     }

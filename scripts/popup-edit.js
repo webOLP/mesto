@@ -2,8 +2,8 @@ const openEditProfileButton = document.querySelector('.profile__edit-button');
 const editProfilePopup = document.querySelector('.popup-edit');
 const closeEditProfilPopupButton = editProfilePopup.querySelector('.popup-edit__close-button');
 const saveEditProfileButton = editProfilePopup.querySelector('.popup-edit__save-button');
-let nameEditProfilePopup = editProfilePopup.querySelector('.popup-edit__name');
-let jobEditProfilePopup = editProfilePopup.querySelector('.popup-edit__job');
+let nameEditProfilePopup = editProfilePopup.querySelector('.popup-edit__input_text_name');
+let jobEditProfilePopup = editProfilePopup.querySelector('.popup-edit__input_text_job');
 let nameProfile = document.querySelector('.profile__name');
 let jobProfile = document.querySelector('.profile__job');
 
@@ -26,7 +26,8 @@ function popupOverlayClick(evt) {
     }
 }
 
-function savePopup() {
+function savePopup(evt) {
+    evt.preventDefault();
     nameProfile.textContent = nameEditProfilePopup.value;
     jobProfile.textContent = jobEditProfilePopup.value;
     removeEditPopup();
@@ -40,4 +41,4 @@ function savePopup() {
 openEditProfileButton.addEventListener('click', addEditPopup);
 closeEditProfilPopupButton.addEventListener('click', removeEditPopup);
 editProfilePopup.addEventListener('click',popupOverlayClick)
-saveEditProfileButton.addEventListener('click', savePopup)
+editProfilePopup.addEventListener('submit', savePopup)

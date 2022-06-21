@@ -9,6 +9,7 @@
 @import url(../blocks/places/places.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/popup-edit/popup-edit.css);
+@import url(../blocks/form/form.css);
 
 
 
@@ -26,14 +27,14 @@
 @import url(../blocks/places/__title/places__title.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup-edit/__window/popup-edit__window.css);
-@import url(../blocks/popup-edit/__form/popup-edit__form.css);
-@import url(../blocks/popup-edit/__input/popup-edit__input.css);
+@import url(../blocks/popup-edit/__form/popup-edit__form.css); /* asda*/
+@import url(../blocks/popup-edit/__input/popup-edit__input.css);/* asda*/
 @import url(../blocks/popup-edit/__title/popup-edit__title.css);
-@import url(../blocks/popup-edit/__save-button/popup-edit__save-button.css);
+@import url(../blocks/popup-edit/__save-button/popup-edit__save-button.css);/* asda*/
 @import url(../blocks/popup-edit/__close-button/popup-edit__close-button.css);
 @import url(../blocks/popup-edit/_is-opened/popup-edit_is-opened.css);
-
-
+@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__save-button/form__save-button.css);
 
 
 /* modifiers */

@@ -9,3 +9,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+
+.popup-edit__input:last-of-type {
+    margin: 30px 0 48px;
+}
+
+@media screen and (max-width: 768px ) {
+    .popup-edit__input:last-of-type  {
+        margin: 30px 0 45px;
+    }
+}

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto Russia</title>
-    <link rel="stylesheet" href="./vendor/normalize.css">
-    <link rel="icon" href="./images/olp.png">
     <link rel="stylesheet" href="./pages/index.css">
+    <link rel="icon" href="./images/olp.png">
 </head>
+
 <body class="page">
     <header class="header container">
         <div class="header__logo">
@@ -18,7 +19,7 @@
         <section class="profile container" aria-label="профиль">
             <img src="./images/Custo.jpg" alt="Жак-Ив Кусто" class="profile__image">
             <div class="profile__about">
-                <h2 class="profile__name">Жак-Ив Кусто</h2>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button type="button" class="profile__edit-button"></button>
                 <p class="profile__job">Исследователь океана</p>
             </div>
@@ -61,14 +62,17 @@
         <p class="footer__copyright">© 2020 OLP</p>
     </footer>
     <div class="popup-edit">
-        <form name="popup-edit-form" class="popup-edit__window">
+        <div class="popup-edit__window">
             <h3 class="popup-edit__title">Редактировать профиль</h3>
-            <input name="input_name" placeholder="Имя" type="text" class="popup-edit__input popup-edit__input_text_name">
-            <input name="input_job" placeholder="Описание" type="text" class="popup-edit__input popup-edit__input_text_job">
-            <button type="submit" class="popup-edit__save-button">Сохранить</button>
-            <button type="reset" class="popup-edit__close-button"><img src="./images/Close-Icon.svg" alt="Кнопка закрытия формы" class="popup-edit__close-button-image"></button>
-        </form>
-    </div> 
-   <script src="./scripts/popup-edit.js"></script>
+            <form name="popup-edit-form" class="popup-edit__form">
+                <input name="input_name" placeholder="Имя" type="text" class="popup-edit__input">
+                <input name="input_job" placeholder="Описание" type="text" class="popup-edit__input">
+                <button type="submit" class="popup-edit__save-button">Сохранить</button>
+            </form>
+            <button type="button" class="popup-edit__close-button"></button>
+        </div>
+    </div>
+    <script src="./scripts/popup-edit.js"></script>
 </body>
+
 </html>

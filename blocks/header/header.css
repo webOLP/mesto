@@ -5,13 +5,12 @@
     height: 74px;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 45px;
+    padding: 45px 0 41px;
 }
 
 @media screen and (max-width: 1024px ) {
     .header {
-        height: 56px;
-        padding-top: 28px;
+        padding: 28px 0 32px;
     }
 }
 

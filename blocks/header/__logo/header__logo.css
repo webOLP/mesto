@@ -7,6 +7,7 @@
     background-color: black;
     /* transition: background-image .3s linear; */
     transition: opacity .3s linear;
+    padding-bottom: 41px;
 }
 
 .header__logo:hover {
@@ -19,6 +20,7 @@
         width: 124px;
         height: 28px;
         margin-left: 27px;
+        padding-bottom: 32px;
     }
 }
 

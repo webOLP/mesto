@@ -4,7 +4,36 @@ const closeAddPlacePopupButton = addPlacePopup.querySelector('.popup__close-butt
 let placeNamePopup = addPlacePopup.querySelectorAll('.form__input')[0];
 let placeLinkPopup = addPlacePopup.querySelectorAll('.form__input')[1];
 let placesBox = document.querySelector('.places');
+const initialPlaces = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
 
+initialPlaces.forEach(function(place){
+    addPlace(place.name,place.link)
+});
 
 function openPopup() {
     addPlacePopup.classList.add('popup_is-opened');
@@ -17,18 +46,18 @@ function closePopup() {
 }
 
 function popupOverlayClick(evt) {
-    if(evt.target === evt.currentTarget){
-        addPlacePopup.classList.remove('popup_is-opened'); 
+    if (evt.target === evt.currentTarget) {
+        addPlacePopup.classList.remove('popup_is-opened');
     }
 }
 
 function savePopup(evt) {
     evt.preventDefault();
-    addPlace(placeNamePopup.value,placeLinkPopup.value);
+    addPlace(placeNamePopup.value, placeLinkPopup.value);
     closePopup();
 }
 
-function addPlace(nameValue,linkValue) {
+function addPlace(nameValue, linkValue) {
     const placeTemplate = document.querySelector('#place-template').content;
     const placeContainer = placeTemplate.querySelector('.places__place').cloneNode(true);
     placeContainer.querySelector('.places__image').src = `${linkValue}`;
@@ -39,5 +68,5 @@ function addPlace(nameValue,linkValue) {
 
 openAddPlaceButton.addEventListener('click', openPopup);
 closeAddPlacePopupButton.addEventListener('click', closePopup);
-addPlacePopup.addEventListener('click',popupOverlayClick)
+addPlacePopup.addEventListener('click', popupOverlayClick)
 addPlacePopup.addEventListener('submit', savePopup)

@@ -8,14 +8,17 @@ let jobProfile = document.querySelector('.profile__job');
 
 
 
-function openPopup() {
+
+function openEditPopup() {
     editProfilePopup.classList.add('popup_is-opened');
     nameEditProfilePopup.value = nameProfile.textContent
     jobEditProfilePopup.value = jobProfile.textContent;
 }
 
-function closePopup() {
+function closeEditPopup() {
+    console.log('sadasd');
     editProfilePopup.classList.remove('popup_is-opened');
+    console.log('sadasd');
 }
 
 function popupOverlayClick(evt) {
@@ -28,7 +31,8 @@ function savePopup(evt) {
     evt.preventDefault();
     nameProfile.textContent = nameEditProfilePopup.value;
     jobProfile.textContent = jobEditProfilePopup.value;
-    closePopup();
+    closeEditPopup();
+    console.log('2')
 }
 
 
@@ -36,7 +40,7 @@ function savePopup(evt) {
 
 
 
-openEditProfileButton.addEventListener('click', openPopup);
-closePopupButton.addEventListener('click', closePopup);
+openEditProfileButton.addEventListener('click', openEditPopup);
+closePopupButton.addEventListener('click', closeEditPopup);
 editProfilePopup.addEventListener('click',popupOverlayClick)
 editProfilePopup.addEventListener('submit', savePopup)

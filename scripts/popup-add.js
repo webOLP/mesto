@@ -7,6 +7,10 @@ let placesBox = document.querySelector('.places');
 const places = document.querySelector('.places');
 const likeButtons = places.querySelectorAll('.places__like-button');
 const deleteButtons = places.querySelectorAll('.places__delete-button');
+const imagePopup = document.querySelector('#popup-image');
+const closeImagePopupButton = imagePopup.querySelector('.popup__close-button')
+const imagePopupImage = imagePopup.querySelector('.popup__image')
+const imagePopupTitle = imagePopup.querySelector('.popup__title')
 const initialPlaces = [
     {
         name: 'Архыз',
@@ -45,6 +49,17 @@ function deleteButtonListener(button){
     button.addEventListener('click', (evt) => evt.currentTarget.closest('.places__place').remove())
 }
 
+function imageListener(card,image,title){
+    image.addEventListener('click', function(evt){
+        if(evt.currentTarget === image) {
+            imagePopup.classList.add('popup_is-opened');
+            imagePopupImage.src = image.src
+            imagePopupTitle.textContent = title.textContent;
+        }
+    });
+
+}
+
 
 function openPopup() {
     addPlacePopup.classList.add('popup_is-opened');
@@ -67,6 +82,7 @@ function savePopup(evt) {
     let placeCard = addPlace(placeNamePopup.value, placeLinkPopup.value);
     likeButtonListener(placeCard.querySelector('.places__like-button'));
     deleteButtonListener(placeCard.querySelector('.places__delete-button'));
+    imageListener(placeCard, placeCard.querySelector('.places__image'), placeCard.querySelector('.places__title'));
     placesBox.prepend(placeCard);
     closePopup();
 }
@@ -83,9 +99,15 @@ function addPlace(nameValue, linkValue) {
 
 initialPlaces.forEach(function(place){
     let placeCard = addPlace(place.name,place.link)
+    likeButtonListener(placeCard.querySelector('.places__like-button'));
+    deleteButtonListener(placeCard.querySelector('.places__delete-button'));
+    imageListener(placeCard, placeCard.querySelector('.places__image'), placeCard.querySelector('.places__title'));
     placesBox.prepend(placeCard);
 });
 openAddPlaceButton.addEventListener('click', openPopup);
 closeAddPlacePopupButton.addEventListener('click', closePopup);
 addPlacePopup.addEventListener('click', popupOverlayClick)
 addPlacePopup.addEventListener('submit', savePopup)
+closeImagePopupButton.addEventListener('click', function(){
+    imagePopup.classList.remove('popup_is-opened')
+})

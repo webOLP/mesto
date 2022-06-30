@@ -14,11 +14,11 @@ const imagePopupImage = imagePopup.querySelector('.popup__image')
 const imagePopupTitle = imagePopup.querySelector('.popup__title')
 const buttonOpenEditProfile = document.querySelector('.profile__edit-button');
 const popupEditProfile = document.querySelector('#popup-edit');
-const buttonClosePopup = popupEditProfile.querySelector('.popup__close-button');
-let namePopupEditProfile = popupEditProfile.querySelector('.form__input:first-of-type');
-let jobPopupEditProfile = popupEditProfile.querySelector('.form__input:last-of-type');
-let nameProfile = document.querySelector('.profile__name');
-let jobProfile = document.querySelector('.profile__job');
+const buttonCloseEditPopup = popupEditProfile.querySelector('.popup__close-button');
+const namePopupEditProfile = popupEditProfile.querySelector('.form__input:first-of-type');
+const jobPopupEditProfile = popupEditProfile.querySelector('.form__input:last-of-type');
+const nameProfile = document.querySelector('.profile__name');
+const jobProfile = document.querySelector('.profile__job');
 
 
 
@@ -26,43 +26,29 @@ function addLikeButtonListener(button) {
     button.addEventListener('click', (evt) => evt.currentTarget.classList.toggle('places__like-button_active'))
 }
 
-/*Вероятно, лучше не использовать и стрелочные функции и функциональные выражения 
-в одном коде, чтобы не было путаницы, но мне было интересно опробовать на деле новые знания*/
-
 function addDeleteButtonListener(button) {
     button.addEventListener('click', (evt) => evt.currentTarget.closest('.places__place').remove())
 }
 
 function addImageListener(card) {
-    let image = card.querySelector('.places__image');
-    image.addEventListener('click', function () {
-        imagePopup.classList.add('popup_is-opened');
-        imagePopupImage.src = image.src
-        imagePopupTitle.textContent = card.querySelector('.places__title').textContent;
-
+    card.querySelector('.places__image').addEventListener('click', function (evt) {
+        openPopup(imagePopup);
+        imagePopupImage.src = evt.currentTarget.src;
+        imagePopupImage.alt = evt.currentTarget.alt;
+        imagePopupTitle.textContent = card.querySelector('.places__title').textContent; //Если я передам сюда переменную с картинкой
+        // (из addPlace),а не карточку, то как я не смогу взять title для попапа.
     });
 
 }
 
 
-function openPopup(evt) {
-    switch (evt.currentTarget) {
-        case buttonOpenPlacePopup:
-            popupAddPlace.classList.add('popup_is-opened');
-            placeNamePopup.value = '';
-            placeLinkPopup.value = '';
-            break;
-        case buttonOpenEditProfile:
-            popupEditProfile.classList.add('popup_is-opened');
-            namePopupEditProfile.value = nameProfile.textContent
-            jobPopupEditProfile.value = jobProfile.textContent;
-    }
+function openPopup(popup) {
+    popup.classList.add('popup_is-opened');
 }
 
 
-function closePopup() { 
-    popupAddPlace.classList.remove('popup_is-opened');
-    popupEditProfile.classList.remove('popup_is-opened');
+function closePopup(popup) { 
+    popup.classList.remove('popup_is-opened');
 }
 
 
@@ -72,40 +58,45 @@ function savePopup(popup,evt) {
         case popupAddPlace:
             let placeCard = addPlace(placeNamePopup.value, placeLinkPopup.value);
             placesBox.prepend(placeCard);
-            closePopup();
+            closePopup(popupAddPlace);
             break;
         case popupEditProfile:
             nameProfile.textContent = namePopupEditProfile.value;
             jobProfile.textContent = jobPopupEditProfile.value;
-            closePopup();
+            closePopup(popupEditProfile);
             break;
     }
 }
 
 function addPlace(nameValue, linkValue) {
     const placeContainer = placeTemplate.querySelector('.places__place').cloneNode(true);
-    placeContainer.querySelector('.places__image').src = `${linkValue}`;
+    let placeImage = placeContainer.querySelector('.places__image');
+    placeImage.src = `${linkValue}`;
+    placeImage.alt = `Фото ${nameValue}`;
     placeContainer.querySelector('.places__title').textContent = `${nameValue}`;
-    placeContainer.querySelector('.places__image').alt = `Фото ${nameValue}`;
     addLikeButtonListener(placeContainer.querySelector('.places__like-button'));
     addDeleteButtonListener(placeContainer.querySelector('.places__delete-button'));
-    addImageListener(placeContainer);
+    addImageListener(placeContainer); // я не могу передать в слушатель placeImage, потому что мне нужен title для попапа.
     return placeContainer
 }
 
 initialPlaces.forEach(function (place) {
     let placeCard = addPlace(place.name, place.link)
-    addLikeButtonListener(placeCard.querySelector('.places__like-button'));
-    addDeleteButtonListener(placeCard.querySelector('.places__delete-button'));
-    addImageListener(placeCard); /////////////////
     placesBox.prepend(placeCard);
 });
-buttonOpenPlacePopup.addEventListener('click', openPopup);
-buttonCloseAddPopup.addEventListener('click', closePopup);
+
+buttonOpenPlacePopup.addEventListener('click', function() {
+    openPopup(popupAddPlace);
+    placeNamePopup.value = '';
+    placeLinkPopup.value = '';
+});
+buttonCloseAddPopup.addEventListener('click', () => closePopup(popupAddPlace));
 popupAddPlace.addEventListener('submit',(evt) =>  savePopup(popupAddPlace,evt))
-buttonCloseImagePopup.addEventListener('click', function () {
-    imagePopup.classList.remove('popup_is-opened')
-})
-buttonOpenEditProfile.addEventListener('click', openPopup);
-buttonClosePopup.addEventListener('click', closePopup);
+buttonCloseImagePopup.addEventListener('click', () => closePopup(imagePopup));
+buttonOpenEditProfile.addEventListener('click', function() {
+    openPopup(popupEditProfile);
+    namePopupEditProfile.value = nameProfile.textContent;
+    jobPopupEditProfile.value = jobProfile.textContent; 
+});
+buttonCloseEditPopup.addEventListener('click', () => closePopup(popupEditProfile));
 popupEditProfile.addEventListener('submit', (evt) =>  savePopup(popupEditProfile,evt))

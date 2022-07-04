@@ -24,14 +24,11 @@ function renderCard(card) {
     placesBox.prepend(card);
 }
 
-function addImageListener(image) {
-    image.addEventListener('click', function (evt) {
-        openPopup(imagePopup);
-        imagePopupImage.src = evt.currentTarget.src;
-        imagePopupImage.alt = evt.currentTarget.alt;
-        imagePopupTitle.textContent = image.parentNode.querySelector('.places__title').textContent;
-    });
-
+function addImageListener(nameValue, linkValue) {
+    openPopup(imagePopup);
+    imagePopupImage.src = `${linkValue}`;
+    imagePopupImage.alt = `Фото ${nameValue}`;
+    imagePopupTitle.textContent = `${nameValue}`
 }
 
 function openPopup(popup) {
@@ -42,9 +39,9 @@ function closePopup(popup) {
     popup.classList.remove('popup_is-opened');
 }
 
-function CreatePlace(nameValue, linkValue) {
+function createPlace(nameValue, linkValue) {
     const placeContainer = placeTemplate.querySelector('.places__place').cloneNode(true);
-    let placeImage = placeContainer.querySelector('.places__image');
+    const placeImage = placeContainer.querySelector('.places__image');
     placeImage.src = `${linkValue}`;
     placeImage.alt = `Фото ${nameValue}`;
     placeContainer.querySelector('.places__title').textContent = `${nameValue}`;
@@ -54,14 +51,14 @@ function CreatePlace(nameValue, linkValue) {
     placeContainer.querySelector('.places__delete-button').addEventListener('click', function (evt) {
         evt.currentTarget.closest('.places__place').remove()
     });
-    addImageListener(placeImage);
+    placeImage.addEventListener('click', () => addImageListener(nameValue, linkValue))
     return placeContainer
 }
 
 
 
 initialPlaces.forEach(function (place) {
-    let placeCard = CreatePlace(place.name, place.link)
+    const placeCard = createPlace(place.name, place.link)
     renderCard(placeCard);
 });
 
@@ -73,7 +70,7 @@ buttonOpenPlacePopup.addEventListener('click', function () {
 buttonCloseAddPopup.addEventListener('click', () => closePopup(popupCreatePlace));
 popupCreatePlace.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    let placeCard = CreatePlace(placeNamePopup.value, placeLinkPopup.value);
+    const placeCard = createPlace(placeNamePopup.value, placeLinkPopup.value);
     renderCard(placeCard);
     closePopup(popupCreatePlace);
 });

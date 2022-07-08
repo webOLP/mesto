@@ -20,6 +20,15 @@ const jobPopupEditProfile = popupEditProfile.querySelector('.form__input:last-of
 const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__job');
 
+function addEscButtonListener(popup){
+    document.addEventListener('keydown',function(evt) {
+        if(evt.key === 'Escape'){
+            closePopup(popup);
+        }
+    })
+}
+
+
 function renderCard(card) {
     placesBox.prepend(card);
 }
@@ -29,6 +38,7 @@ function addImageListener(nameValue, linkValue) {
     imagePopupImage.src = `${linkValue}`;
     imagePopupImage.alt = `Фото ${nameValue}`;
     imagePopupTitle.textContent = `${nameValue}`
+    addEscButtonListener(imagePopup);
 }
 
 function openPopup(popup) {
@@ -66,6 +76,7 @@ buttonOpenPlacePopup.addEventListener('click', function () {
     openPopup(popupCreatePlace);
     placeNamePopup.value = '';
     placeLinkPopup.value = '';
+    addEscButtonListener(popupCreatePlace)
 });
 buttonCloseAddPopup.addEventListener('click', () => closePopup(popupCreatePlace));
 popupCreatePlace.addEventListener('submit', function (evt) {
@@ -74,11 +85,13 @@ popupCreatePlace.addEventListener('submit', function (evt) {
     renderCard(placeCard);
     closePopup(popupCreatePlace);
 });
-buttonCloseImagePopup.addEventListener('click', () => closePopup(imagePopup));
+buttonCloseImagePopup.addEventListener('click', () => closePopup(imagePopup)
+);
 buttonOpenEditProfile.addEventListener('click', function () {
     openPopup(popupEditProfile);
     namePopupEditProfile.value = nameProfile.textContent;
     jobPopupEditProfile.value = jobProfile.textContent;
+    addEscButtonListener(popupEditProfile)
 });
 buttonCloseEditPopup.addEventListener('click', () => closePopup(popupEditProfile));
 popupEditProfile.addEventListener('submit', function (evt) {
@@ -87,3 +100,4 @@ popupEditProfile.addEventListener('submit', function (evt) {
     jobProfile.textContent = jobPopupEditProfile.value;
     closePopup(popupEditProfile);
 })
+

@@ -19,15 +19,15 @@ const namePopupEditProfile = popupEditProfile.querySelector('.form__input:first-
 const jobPopupEditProfile = popupEditProfile.querySelector('.form__input:last-of-type');
 const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__job');
+const popupList = document.querySelectorAll('.popup');
 
-function addEscButtonListener(popup){
-    document.addEventListener('keydown',function(evt) {
-        if(evt.key === 'Escape'){
+function addEscButtonListener(popup) {
+    document.addEventListener('keydown', function (evt) {
+        if (evt.key === 'Escape') {
             closePopup(popup);
         }
     })
 }
-
 
 function renderCard(card) {
     placesBox.prepend(card);
@@ -47,6 +47,12 @@ function openPopup(popup) {
 
 function closePopup(popup) {
     popup.classList.remove('popup_is-opened');
+}
+
+function addOverlayClickListener(popup, evt) {
+    if (evt.target === evt.currentTarget) {
+        closePopup(popup);
+    }
 }
 
 function createPlace(nameValue, linkValue) {
@@ -85,8 +91,7 @@ popupCreatePlace.addEventListener('submit', function (evt) {
     renderCard(placeCard);
     closePopup(popupCreatePlace);
 });
-buttonCloseImagePopup.addEventListener('click', () => closePopup(imagePopup)
-);
+buttonCloseImagePopup.addEventListener('click', () => closePopup(imagePopup));
 buttonOpenEditProfile.addEventListener('click', function () {
     openPopup(popupEditProfile);
     namePopupEditProfile.value = nameProfile.textContent;
@@ -101,3 +106,6 @@ popupEditProfile.addEventListener('submit', function (evt) {
     closePopup(popupEditProfile);
 })
 
+popupList.forEach(function(popup){
+    popup.addEventListener('click',(evt) => addOverlayClickListener(popup,evt));
+})

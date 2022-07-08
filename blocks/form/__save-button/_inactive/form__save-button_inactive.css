@@ -3,4 +3,9 @@
     background: none;
     color: #000000;
     opacity: 0.2;
+    cursor: default;
+}
+
+.form__save-button_inactive:hover {
+    opacity: 0.2;
 }

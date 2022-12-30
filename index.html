@@ -36,7 +36,7 @@
     <div id="popup-edit" class="popup">
         <div class="popup__window">
             <h3 class="popup__title">Редактировать профиль</h3>
-            <form name="popup-form" class="form">
+            <form name="popup-form" class="form form">
                 <input name="input-name" placeholder="Имя" type="text" class="form__input" minlength="2" maxlength="40" required>
                 <span class="form__input-error input-name-error"></span>
                 <input name="input-job" placeholder="Описание" type="text" class="form__input" minlength="2" maxlength="200" required>
@@ -50,7 +50,7 @@
     <div id="popup-add" class="popup">
         <div class="popup__window">
             <h3 class="popup__title">Новое место</h3>
-            <form name="popup-form" class="form">
+            <form name="popup-form" class="form form">
                 <input name="input-place" placeholder="Название" type="text" class="form__input" minlength="2" maxlength="30" required>
                 <span class="form__input-error input-place-error"></span>
                 <input name="input-link" placeholder="Ссылка на картинку" type="url" class="form__input" required>
@@ -79,9 +79,13 @@
             <button type="button" class="places__delete-button"></button>
         </div>
     </template>
-    <script src="./scripts/cards.js"></script>
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/validate.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/card.js"></script>
+    <script type="module" src="./scripts/cards.js"></script>
+    <script type="module" src="./scripts/validate.js"></script>
+    
+    
+    
 </body>
 
 </html>

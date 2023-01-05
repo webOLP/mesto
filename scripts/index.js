@@ -1,6 +1,6 @@
-import {card} from './card.js'
+import {Card} from './card.js'
 import {initialPlaces} from './cards.js'
-import {validation} from './validate.js'
+import {FormValidator} from './validate.js'
 
 
 const buttonOpenPlacePopup = document.querySelector('.profile__add-button');
@@ -10,8 +10,7 @@ const placeNamePopup = popupCreatePlace.querySelector('.form__input:first-of-typ
 const placeLinkPopup = popupCreatePlace.querySelector('.form__input:last-of-type');
 export const placesBox = document.querySelector('.places');
 const places = document.querySelector('.places');
-const buttonsLike = places.querySelectorAll('.places__like-button');
-const buttonsDelete = places.querySelectorAll('.places__delete-button');
+
 export const imagePopup = document.querySelector('#popup-image');
 export const imagePopupImage = imagePopup.querySelector('.popup__image');
 export const imagePopupTitle = imagePopup.querySelector('.popup__title');
@@ -23,8 +22,10 @@ const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__job');
 const popupList = document.querySelectorAll('.popup');
 
-
-
+function createCard(name, link, template){
+    const placeCard = new Card(name, link, template);
+    placesBox.prepend(placeCard.createPlace())
+}
 
 function closeByEscape(evt) {
     if (evt.key === 'Escape') {
@@ -47,27 +48,19 @@ function closePopup(popup) {
 
 
 initialPlaces.forEach(function (place) {
-    const placeCard = new card(place.name,place.link,placeTemplate);
-    placeCard.createPlace();
-    
+    createCard(place.name, place.link, placeTemplate);
 });
 
 buttonOpenPlacePopup.addEventListener('click', function () {
-    
     openPopup(popupCreatePlace);
-    const saveButton = popupCreatePlace.querySelector('.form__save-button')
-    saveButton.setAttribute('disabled', 'true');
-    saveButton.classList.add('form__save-button_inactive');
     placeNamePopup.value = '';
     placeLinkPopup.value = '';
-    document.querySelector('.form__input').dispatchEvent(new Event('input'));
-
+    validatePopupPlace.clearErrors();
 });
 
 popupCreatePlace.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    const placeCard = new card(placeNamePopup.value, placeLinkPopup.value,placeTemplate);
-    placeCard.createPlace();
+    createCard(placeNamePopup.value, placeLinkPopup.value, placeTemplate);
     closePopup(popupCreatePlace);
 });
 
@@ -75,6 +68,7 @@ buttonOpenEditProfile.addEventListener('click', function () {
     openPopup(popupEditProfile);
     namePopupEditProfile.value = nameProfile.textContent;
     jobPopupEditProfile.value = jobProfile.textContent;
+    validatePopupProfile.clearErrors();
 });
 
 popupEditProfile.addEventListener('submit', function (evt) {
@@ -95,13 +89,22 @@ popupList.forEach((popup) => {
     })
 })
 
-const validatePopupPlace = new validation('.form',
-'.form__input',
-'.form__save-button',
-'form__save-button_inactive',
-'form__input_type_error',
-'form__input-error_active');
+const validatePopupPlace = new FormValidator(document.querySelector('#place-form'),
+{
+    inputSelector : '.form__input',
+    submitButtonSelector : '.form__save-button',
+    inactiveButtonClass : 'form__save-button_inactive',
+    inputErrorClass : 'form__input_type_error',
+    errorClass : 'form__input-error_active'});
 validatePopupPlace.enableValidation();
+const validatePopupProfile = new FormValidator(document.querySelector('#profile-form'),
+{
+    inputSelector : '.form__input',
+    submitButtonSelector : '.form__save-button',
+    inactiveButtonClass : 'form__save-button_inactive',
+    inputErrorClass : 'form__input_type_error',
+    errorClass : 'form__input-error_active'});
+validatePopupProfile.enableValidation();
 
 
 

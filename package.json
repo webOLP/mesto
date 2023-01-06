@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "Сайт \"Mesto Russia\" позволяет пользователям делиться местами России, в которых они были, в профиле, который они могут редактировать.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webOLP/mesto.git"
+  },
+  "author": "OLP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/webOLP/mesto/issues"
+  },
+  "homepage": "https://github.com/webOLP/mesto#readme"
+}

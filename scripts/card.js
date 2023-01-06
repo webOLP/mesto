@@ -1,23 +1,25 @@
 import {
     imagePopup,
     imagePopupImage,
-    openPopup,
+    // openPopup,
     imagePopupTitle
 } from './index.js';
 
 export class Card {
-    constructor(name, link, template){
+    constructor(name, link, template, deleter, handleCardClick){
         this._name = name;
         this._link = link;
         this._template = template;
         this._container = this._template.querySelector('.places__place').cloneNode(true);
         this._image = this._container.querySelector('.places__image');
+        this._deleter = deleter;
+        this._handleImageClick = handleCardClick;
     }
     
     _addEventListeners() {
         this._container.querySelector('.places__like-button').addEventListener('click', (evt) => this._toggleLike(evt));
         this._container.querySelector('.places__delete-button').addEventListener('click', (evt) => this._deleteCard(evt));
-        this._image.addEventListener('click', () => this._handleImageClick());
+        this._image.addEventListener('click', () => this._handleImageClick({name : this._name, link : this._link}));
     }
 
     _toggleLike(evt) {
@@ -25,15 +27,9 @@ export class Card {
     }
 
     _deleteCard(evt) {
-        evt.currentTarget.closest('.places__place').remove();
+        this._deleter({name : this._name, link : this._link});
     }
 
-    _handleImageClick() {
-        openPopup(imagePopup);
-        imagePopupImage.src = `${this._link}`;
-        imagePopupImage.alt = `Фото ${this._name}`;
-        imagePopupTitle.textContent = `${this._name}`
-    }
 
     createPlace() {
         this._image.src = `${this._link}`;

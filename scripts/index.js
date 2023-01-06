@@ -22,9 +22,11 @@ const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__job');
 const popupList = document.querySelectorAll('.popup');
 
+
+
 function createCard(name, link, template){
     const placeCard = new Card(name, link, template);
-    placesBox.prepend(placeCard.createPlace())
+    return placeCard.createPlace();
 }
 
 function closeByEscape(evt) {
@@ -48,7 +50,7 @@ function closePopup(popup) {
 
 
 initialPlaces.forEach(function (place) {
-    createCard(place.name, place.link, placeTemplate);
+    placesBox.prepend(createCard(place.name, place.link, placeTemplate));
 });
 
 buttonOpenPlacePopup.addEventListener('click', function () {
@@ -60,7 +62,7 @@ buttonOpenPlacePopup.addEventListener('click', function () {
 
 popupCreatePlace.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    createCard(placeNamePopup.value, placeLinkPopup.value, placeTemplate);
+    placesBox.prepend(createCard(placeNamePopup.value, placeLinkPopup.value, placeTemplate));
     closePopup(popupCreatePlace);
 });
 
@@ -89,21 +91,17 @@ popupList.forEach((popup) => {
     })
 })
 
-const validatePopupPlace = new FormValidator(document.querySelector('#place-form'),
-{
+const formSelectors = {
     inputSelector : '.form__input',
     submitButtonSelector : '.form__save-button',
     inactiveButtonClass : 'form__save-button_inactive',
     inputErrorClass : 'form__input_type_error',
-    errorClass : 'form__input-error_active'});
+    errorClass : 'form__input-error_active'
+};
+
+const validatePopupPlace = new FormValidator(document.querySelector('#place-form'), formSelectors);
 validatePopupPlace.enableValidation();
-const validatePopupProfile = new FormValidator(document.querySelector('#profile-form'),
-{
-    inputSelector : '.form__input',
-    submitButtonSelector : '.form__save-button',
-    inactiveButtonClass : 'form__save-button_inactive',
-    inputErrorClass : 'form__input_type_error',
-    errorClass : 'form__input-error_active'});
+const validatePopupProfile = new FormValidator(document.querySelector('#profile-form'), formSelectors);
 validatePopupProfile.enableValidation();
 
 

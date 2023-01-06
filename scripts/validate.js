@@ -38,7 +38,7 @@ export class FormValidator {
   _setEventListeners() {
     
     this._toggleButtonState();
-    let that = this;
+    const that = this;
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', function () {
         that._checkInputValidity(inputElement);
@@ -67,7 +67,7 @@ export class FormValidator {
 
   clearErrors(){
     
-    let that = this;
+    const that = this;
     this._inputList.forEach((inputElement) => {
       that._hideInputError(inputElement)
     });

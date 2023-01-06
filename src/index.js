@@ -1,10 +1,12 @@
-import {Card} from './card.js'
-import {initialPlaces} from './cards.js'
-import {FormValidator} from './validate.js'
-import Section from './section.js';
-import PopupWithImage from './popupWithImage.js';
-import PopupWithForm from './popupWithForm.js';
-import UserInfo from './userInfo.js';
+import './pages/index.css';
+
+import {Card} from './components/card.js'
+import {initialPlaces} from './scripts/constants.js'
+import {FormValidator} from './components/formValidator.js'
+import Section from './components/section.js';
+import PopupWithImage from './components/popupWithImage.js';
+import PopupWithForm from './components/popupWithForm.js';
+import UserInfo from './components/userInfo.js';
 
 const buttonOpenPlacePopup = document.querySelector('.profile__add-button');
 const popupCreatePlace = document.querySelector('#popup-add');
@@ -55,24 +57,7 @@ cardList.renderItems();
 const userInfo = new UserInfo('.profile__name', '.profile__job');
 
 
-// function closeByEscape(evt) {
-//     if (evt.key === 'Escape') {
-//       const openedPopup = document.querySelector('.popup_is-opened') 
-//       closePopup(openedPopup);
-//     }
-//   }
 
-
-
-// export function openPopup(popup) {
-//     popup.classList.add('popup_is-opened');
-//     document.addEventListener('keydown', closeByEscape)
-// }
-
-// function closePopup(popup) {
-//     popup.classList.remove('popup_is-opened');
-//     document.removeEventListener('keydown', closeByEscape)
-// }
 
 const popupImage = new PopupWithImage('#popup-image')
 
@@ -104,23 +89,7 @@ buttonOpenEditProfile.addEventListener('click', function () {
     validatePopupProfile.clearErrors();
 });
 
-// popupEditProfile.addEventListener('submit', function (evt) {
-//     evt.preventDefault();
-//     nameProfile.textContent = namePopupEditProfile.value;
-//     jobProfile.textContent = jobPopupEditProfile.value;
-//     closePopup(popupEditProfile);
-// })
 
-// popupList.forEach((popup) => {
-//     popup.addEventListener('mousedown', (evt) => {
-//         if (evt.target.classList.contains('popup_is-opened')) {
-//             closePopup(popup)
-//         }
-//         if (evt.target.classList.contains('popup__close-button')) {
-//           closePopup(popup)
-//         }
-//     })
-// })
 
 const formSelectors = {
     inputSelector : '.form__input',

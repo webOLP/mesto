@@ -1,9 +1,8 @@
 import {
     imagePopup,
     imagePopupImage,
-    // openPopup,
     imagePopupTitle
-} from './index.js';
+} from '../index.js';
 
 export class Card {
     constructor(name, link, template, deleter, handleCardClick){

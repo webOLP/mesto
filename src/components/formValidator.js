@@ -71,7 +71,7 @@ export class FormValidator {
     this._inputList.forEach((inputElement) => {
       that._hideInputError(inputElement)
     });
-    this._toggleButtonState(this._form.querySelector(`${this._submitButtonSelector}`))
+    this._toggleButtonState();
 
   }
 

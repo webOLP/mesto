@@ -39,7 +39,7 @@ export const buttonOpenEditProfile = document.querySelector('.profile__edit-butt
 export const popupEditProfile = document.querySelector('#popup-edit');
 export const namePopupEditProfile = popupEditProfile.querySelector('.form__input:first-of-type');
 export const jobPopupEditProfile = popupEditProfile.querySelector('.form__input:last-of-type');
-export const cards = initialPlaces;
+export const cards = [];
 export const formSelectors = {
     inputSelector: '.form__input',
     submitButtonSelector: '.form__save-button',

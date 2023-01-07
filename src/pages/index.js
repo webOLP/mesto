@@ -11,6 +11,7 @@ import Section from '../components/section.js';
 import PopupWithImage from '../components/popupWithImage.js';
 import PopupWithForm from '../components/popupWithForm.js';
 import UserInfo from '../components/userInfo.js';
+import Api from '../components/Api';
 import {
     buttonOpenPlacePopup,
     popupCreatePlace,
@@ -32,6 +33,33 @@ import {
 } from '../scripts/constants.js'
 
 
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-56',
+    headers: {
+      authorization: '220edf35-3f17-4203-881e-a1792be4e469',
+      'Content-Type': 'application/json'
+    }
+  });
+
+setInterval(() => { api.getInitialCards()
+  .then((res) => {
+    cardList.renderItems(res);
+  })
+  .catch((err) => {
+    console.log(err); // выведем ошибку в консоль
+  });
+},
+  15000
+)
+
+api.getUserInfo()
+    .then((res) => {
+        userInfo.setUserInfo(res.name, res.about)
+    })
+    .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+    });
+
 
 function createCard(name, link, template) {
     const placeCard = new Card(name, link, template,
@@ -44,14 +72,13 @@ function createCard(name, link, template) {
 
 
 const cardList = new Section({
-    data: initialPlaces,
     renderer: (item) => {
         const cardElement = createCard(item.name, item.link, placeTemplate)
         cardList.addItem(cardElement);
     }
 }, placesBoxSelector);
 
-cardList.renderItems();
+// cardList.renderItems();
 
 const userInfo = new UserInfo('.profile__name', '.profile__job');
 
@@ -67,7 +94,13 @@ const popupPlaceForm = new PopupWithForm('#popup-add', (values) => {
 })
 
 const popupProfileForm = new PopupWithForm('#popup-edit', (values) => {
-    userInfo.setUserInfo(values[namePopupEditProfile.name], values[jobPopupEditProfile.name])
+    api.patchUserInfo({name : values[namePopupEditProfile.name], about: values[jobPopupEditProfile.name]})
+    .then((res)=>{
+        userInfo.setUserInfo(res.name, res.about)
+    })
+    .catch((res) => {
+        console.log(res);
+    })
     popupProfileForm.close();
 })
 

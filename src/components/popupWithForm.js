@@ -19,6 +19,7 @@ export default class PopupWithForm extends Popup {
         const that = this;
         this._popup.addEventListener('submit', function (evt) {
             evt.preventDefault();
+            ////TODO: Сохранить......
             that._submitter(that._getInputValues());
         });
     }

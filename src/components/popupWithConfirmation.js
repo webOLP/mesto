@@ -19,7 +19,7 @@ export default class PopupWithConfirmation extends Popup {
 
     close(){
         super.close();
-        let that = this;
+        const that = this;
         this._form.removeEventListener('submit', function (evt) {
             evt.preventDefault();
             that._conformationFunction();

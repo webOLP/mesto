@@ -50,33 +50,29 @@ const api = new Api({
 function updateCards() {
     api.getInitialCards()
         .then((res) => {
-            Promise.all([userInfoPromise])
-                .then(() => {
-                    cardList.renderItems(res);
-                })
-
+            if (userInfo.getUserId())
+                cardList.renderItems(res);
         })
         .catch((err) => {
             console.log(err); // выведем ошибку в консоль
         });
 }
-updateCards();
-setInterval(updateCards, 5000);
 
-const userInfoPromise = api.getUserInfo();
-userInfoPromise
-.then((res) => {
-    userInfo.setUserInfo(res)
-})
-.catch((err) => {
-    console.log(err); // выведем ошибку в консоль
-});
+setInterval(updateCards, 60000);
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+    .then((res) => {
+        userInfo.setUserInfo(res[1]);
+        cardList.renderItems(res[0]);
+    })
+    .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+    });
 
 function createCard(card, template) {
     const placeCard = new Card(card, template,
         (card) => {
             popupDeleteCard.open(() => {
-
                 api.deleteCard(card._id)
                     .then((res) => {
                         updateCards();
@@ -134,8 +130,10 @@ const popupChangeAvatar = new PopupWithForm('#popup-avatar', (values) => {
             popupChangeAvatar.close()
         })
         .catch((res) => {
-            popupChangeAvatar.renderLoading(false);
             console.log(res);
+        })
+        .finally((res) => {
+            popupChangeAvatar.renderLoading(false);
         })
 })
 
@@ -151,10 +149,11 @@ const popupPlaceForm = new PopupWithForm('#popup-add', (values) => {
             popupPlaceForm.close();
         })
         .catch((res) => {
-            popupPlaceForm.renderLoading(false);
             console.log(res);
         })
-
+        .finally((res) => {
+            popupPlaceForm.renderLoading(false);
+        })
 })
 
 const popupProfileForm = new PopupWithForm('#popup-edit', (values) => {
@@ -167,10 +166,11 @@ const popupProfileForm = new PopupWithForm('#popup-edit', (values) => {
             popupProfileForm.close();
         })
         .catch((res) => {
-            popupProfileForm.renderLoading(false);
             console.log(res);
         })
-
+        .finally((res) => {
+            popupProfileForm.renderLoading(false);
+        })
 })
 
 buttonOpenPlacePopup.addEventListener('click', function () {

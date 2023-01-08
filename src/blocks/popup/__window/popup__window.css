@@ -1,6 +1,7 @@
 .popup__window {
     background-color: #FFFFFF;
-    width: 430px;
+    width: 360px;
+    max-height: 265px;
     max-width: 430px;
     display: flex;
     flex-direction: column;
@@ -8,7 +9,7 @@
     color: black;
     position: relative;
     border-radius: 10px;
-    box-sizing: border-box;
+    box-sizing: content-box;
 }
 
 @media screen and (max-width: 1024px ) {

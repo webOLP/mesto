@@ -11,7 +11,8 @@
     cursor: pointer;
     border-radius: 2px;
     transition: opacity .3s linear;
-    margin-top: 48px;
+    margin-top: 0px;
+    justify-self: flex-end;
 }
 
 .form__save-button:hover {
@@ -22,6 +23,5 @@
     .form__save-button {
         font-size: 14px;
         line-height: 17px;
-        margin-top: 45px;
     }
 }

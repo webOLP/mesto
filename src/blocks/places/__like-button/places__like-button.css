@@ -1,6 +1,6 @@
 .places__like-button {
-    margin: auto 20px 38px 0;
-    height: 19px;
+    
+    min-height: 19px;
     width: 22px;
     border: 0;
     padding: 0;

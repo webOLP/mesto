@@ -17,7 +17,10 @@
     </header>
     <main class="main-content">
         <section class="profile container" aria-label="профиль">
-            <img src="<%=require('./images/Custo.jpg')%>" alt="Жак-Ив Кусто" class="profile__image">
+            <div class="profile__image-cover">
+                <img src="<%=require('./images/Custo.jpg')%>" alt="Жак-Ив Кусто" class="profile__image">
+                <div class="profile__pencil"></div>
+            </div>
             <div class="profile__about">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button type="button" class="profile__edit-button"></button>
@@ -63,9 +66,9 @@
     <!-- Попап удаления карточки -->
     <div id="popup-delete" class="popup">
         <div class="popup__window">
-            <h3 class="popup__title">Вы уверены?</h3>
+            <h3 class="popup__title popup__title_short-popup">Вы уверены?</h3>
             <form name="popup-form" id="confirmation-form" class="form form">
-                <button type="submit" class="form__save-button">Да</button>
+                <button type="submit" class="form__save-button form__save-button_short-popup">Да</button>
             </form>
             <button type="button" class="popup__close-button"></button>
         </div>
@@ -97,8 +100,10 @@
             <img alt="фото добавленное пользователем" class="places__image" src="<%=require('./images/photo1.jpg')%>">
             <!-- Тест практикума не пропускает без значение src -->
             <h3 class="places__title"></h3>
-            <button type="button" class="places__like-button"></button>
-            <p class="places__like-counter">0</p>
+            <div class="places__like-info">
+                <button type="button" class="places__like-button"></button>
+                <p class="places__like-counter">0</p>
+            </div>
             <button type="button" class="places__delete-button"></button>
         </div>
     </template>

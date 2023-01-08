@@ -7,18 +7,14 @@ export default class PopupWithConfirmation extends Popup {
         this._form = this._popup.querySelector('.form')
     }
 
-    
-
-
     open(conformationFunction){
         super.open();
         this._conformationFunction = conformationFunction;
-        let that = this;
+        const that = this;
         this._form.addEventListener('submit', function (evt) {
             evt.preventDefault();
             that._conformationFunction();
         });
-        
     }
 
     close(){

@@ -1,5 +1,5 @@
 export class Card {
-    constructor(data, template, deleter, handleCardClick, handleToggleLike){
+    constructor(data, template, deleter, handleCardClick, handleToggleLike) {
         this._name = data.name;
         this._link = data.link;
         this._likeCounter = data.likes.length;
@@ -16,60 +16,49 @@ export class Card {
         this._likes = this._container.querySelector('.places__like-counter');
         this._deleter = deleter;
         this._handleToggleLike = handleToggleLike;
-
     }
-    
+
     _addEventListeners() {
-        
         this._likeButton.addEventListener('click', (evt) => this._handleToggleLike(this));
         this._deleteButton.addEventListener('click', (evt) => this._handleDeleteCard(evt));
-        this._image.addEventListener('click', () => this._handleImageClick({name : this._name, link : this._link}));
+        this._image.addEventListener('click', () => this._handleImageClick({
+            name: this._name,
+            link: this._link
+        }));
     }
 
-
-    
-
-    checkLiked(myId){
-        
+    checkLiked(myId) {
         return this._likesList.find((userLike) => {
-            if(userLike._id === myId) return true
+            if (userLike._id === myId) return true
         })
-            
-        
     }
-    // _handleToggleLike(evt) {
-
-    //     // evt.currentTarget.classList.toggle('places__like-button_active');
-    // }
-
-    updateLikeList(list){
+ 
+    updateLikeList(list) {
         this._likesList = list;
         this._likeCounter = this._likesList.length;
         this._likes.textContent = this._likeCounter;
     }
 
-    changeStatusLikeButton(){
+    changeStatusLikeButton() {
         this._likeButton.classList.toggle('places__like-button_active');
     }
 
 
     _handleDeleteCard(evt) {
         this._deleter(this);
-        // evt.currentTarget.closest('.places__place').remove();
     }
 
-    checkMyCard(myId){
-        return this._owner._id === myId ;
+    checkMyCard(myId) {
+        return this._owner._id === myId;
     }
-
 
     createPlace(myId) {
         this._image.src = `${this._link}`;
         this._image.alt = `Фото ${this._name}`;
         this._title.textContent = `${this._name}`;
-        this._likes.textContent =  `${this._likeCounter}`;
+        this._likes.textContent = `${this._likeCounter}`;
         this._addEventListeners();
-        if(this.checkLiked(myId)) {
+        if (this.checkLiked(myId)) {
             this.changeStatusLikeButton()
         };
         if (!this.checkMyCard(myId)) this._deleteButton.remove();

@@ -20,17 +20,26 @@ export default class PopupWithForm extends Popup {
         const that = this;
         this._popup.addEventListener('submit', function (evt) {
             evt.preventDefault();
-            console.log(that._submitButton)
-            that._submitButton.innerHTML = 'Сохранить...';
+            that.renderLoading(true);
             that._submitter(that._getInputValues());
-            that._submitButton.innerHTML = 'Сохранить';
         });
-        
+    }
+
+    renderLoading(state){
+        if (state) {
+            this._submitButton.innerHTML = 'Сохранить...';
+        } else {
+            this._submitButton.innerHTML = 'Сохранить';
+        }
     }
 
     close() {
         super.close();
-        this._form.reset();
+        this.renderLoading(false);
+        this.reset();
     }
 
+    reset(){
+        this._form.reset();
+    }
 }

@@ -36,7 +36,6 @@ export class FormValidator {
   };
 
   _setEventListeners() {
-    
     this._toggleButtonState();
     const that = this;
     this._inputList.forEach((inputElement) => {
@@ -45,8 +44,6 @@ export class FormValidator {
         that._toggleButtonState();
       });
     });
-
-
   };
 
   _hasInvalidInput() {
@@ -66,7 +63,6 @@ export class FormValidator {
   }
 
   clearErrors(){
-    
     const that = this;
     this._inputList.forEach((inputElement) => {
       that._hideInputError(inputElement)
@@ -80,7 +76,6 @@ export class FormValidator {
         evt.preventDefault();
       });
       this._setEventListeners();
-    
   };
 
 }

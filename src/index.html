@@ -60,6 +60,28 @@
             <button type="button" class="popup__close-button"></button>
         </div>
     </div>
+    <!-- Попап удаления карточки -->
+    <div id="popup-delete" class="popup">
+        <div class="popup__window">
+            <h3 class="popup__title">Вы уверены?</h3>
+            <form name="popup-form" id="confirmation-form" class="form form">
+                <button type="submit" class="form__save-button">Да</button>
+            </form>
+            <button type="button" class="popup__close-button"></button>
+        </div>
+    </div>
+    <!-- Попап изменения фотографии -->
+    <div id="popup-avatar" class="popup">
+        <div class="popup__window">
+            <h3 class="popup__title">Обновить аватар</h3>
+            <form name="popup-form" id="avatar-form" class="form form">
+                <input name="input-link" placeholder="Ссылка на картинку" type="url" class="form__input" required>
+                <span class="form__input-error input-link-error"></span>
+                <button type="submit" class="form__save-button form__save-button_inactive">Сохранить</button>
+            </form>
+            <button type="button" class="popup__close-button"></button>
+        </div>
+    </div>
     <!-- Попап увеличенной картинки -->
     <div id="popup-image" class="popup popup_image">
         <div class="popup__window popup__window_image">
@@ -76,6 +98,7 @@
             <!-- Тест практикума не пропускает без значение src -->
             <h3 class="places__title"></h3>
             <button type="button" class="places__like-button"></button>
+            <p class="places__like-counter">0</p>
             <button type="button" class="places__delete-button"></button>
         </div>
     </template>

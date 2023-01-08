@@ -134,6 +134,7 @@ const popupChangeAvatar = new PopupWithForm('#popup-avatar', (values) => {
             popupChangeAvatar.close()
         })
         .catch((res) => {
+            popupChangeAvatar.renderLoading(false);
             console.log(res);
         })
 })
@@ -150,6 +151,7 @@ const popupPlaceForm = new PopupWithForm('#popup-add', (values) => {
             popupPlaceForm.close();
         })
         .catch((res) => {
+            popupPlaceForm.renderLoading(false);
             console.log(res);
         })
 
@@ -165,6 +167,7 @@ const popupProfileForm = new PopupWithForm('#popup-edit', (values) => {
             popupProfileForm.close();
         })
         .catch((res) => {
+            popupProfileForm.renderLoading(false);
             console.log(res);
         })
 
